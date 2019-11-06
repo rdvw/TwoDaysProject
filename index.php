@@ -7,12 +7,10 @@
     <title>MOR - Free and Fairly Legal Movie Database</title>
 </head>
 <body>
-
     <?php
 
-
+        require_once('nav.html');
 
     ?>
-
 </body>
 </html>
