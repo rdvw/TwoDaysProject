@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
         require_once 'db_connect.php';
         if ($isValidMail) {
             $query = "SELECT * FROM `users` WHERE `email` = '$isValidMail'";
-            $result_query = mysqli_query(CONNECT, $query); 
+            $result_query = mysqli_query($connect, $query); 
             if($result_query -> num_rows !=0){
                 $res = mysqli_fetch_assoc($result_query);
                 if(password_verify($password, $res['password'])){
