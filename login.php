@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
     if (empty($email) || empty($password)) {
         echo 'email or password should be not empty';
     }else{
-        require_once 'database_acces.php';
+        require_once 'db_connect.php';
         if ($isValidMail) {
             $query = "SELECT * FROM `users` WHERE `email` = '$isValidMail'";
             $result_query = mysqli_query(CONNECT, $query); 
