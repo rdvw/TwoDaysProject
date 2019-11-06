@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
         require_once 'database_acces.php';
         $connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
         if ($isValidMail) {
-            $query = "SELECT * FROM `users` WHERE `mail` = '$isValidMail'";
+            $query = "SELECT * FROM `users` WHERE `email` = '$isValidMail'";
             $result_query = mysqli_query($connect, $query); 
             if($result_query -> num_rows !=0){
                 $res = mysqli_fetch_assoc($result_query);
