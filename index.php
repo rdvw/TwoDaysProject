@@ -9,7 +9,6 @@
 </head>
 
 <body>
-
     <?php
 
     require_once 'nav.html';
@@ -19,7 +18,6 @@
     echo '<p class="home">Hi, please <a href="login.php">login</a> or <a href="registration.php">register</a>.</p>';
 
     ?>
-
 </body>
 
 </html>
