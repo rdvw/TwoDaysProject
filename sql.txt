@@ -1,0 +1,7 @@
+INSERT INTO `categories` (`categtory_id`, `title`, `description`) VALUES (NULL, 'Science Fiction', 'Science Fiction')
+
+INSERT INTO `categories` (`categtory_id`, `title`, `description`) VALUES (NULL, 'Humor', 'Humor')
+
+INSERT INTO `categories` (`categtory_id`, `title`, `description`) VALUES (NULL, 'Horror', 'Horror')
+
+INSERT INTO `categories` (`categtory_id`, `title`, `description`) VALUES (NULL, 'Western', 'Western') 
