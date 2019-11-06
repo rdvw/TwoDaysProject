@@ -16,6 +16,8 @@
         <form action="search.php" method="POST">
             <input type="text" name="search" id="search" placeholder="your search term here">
             <input type="submit" name="submit" value="search">
+            <div id="results">
+            </div>
         </form>
     </section>
 
@@ -34,3 +36,35 @@
     </section>
 
 </div>
+
+<script src=" https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+
+  <script>
+    $(function () {
+      $('#search').keyup(function (e) {
+        e.preventDefault();
+        $.ajax({
+          url: 'search.php',
+          type: 'post',
+          dataType: "html",
+          data: { search: $(this).val() },
+          success: function (result) {
+            console.log(result);
+            $('#results').show();
+            $('#results').html(result);
+            $("#results").css("background", "#FFF");
+          },
+          error: function (err) {
+            // IF AJAX ERROR HAPPENED
+          }
+        });
+      });
+    });
+
+    function selectCountry(val) {
+      $("#mysearch").val(val);
+      $("#results").hide();
+    }
+  </script>
