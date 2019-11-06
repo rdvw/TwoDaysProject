@@ -10,8 +10,18 @@
 
     <?php
 
+    require_once 'nav.html';
 
+    require_once 'db_connect.php';
 
+    $db_found = mysqli_select_db($connect, $db_name);
+
+    if ($db_found) {
+    echo '"$db_name found !<br>';
+     } else {
+    echo "Insert went wrong";
+    }
+  
     ?>
 
 </body>
