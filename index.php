@@ -7,6 +7,12 @@
     <title>MOR - Free and Fairly Legal Movie Database</title>
 </head>
 <body>
-    
+
+    <?php
+
+
+
+    ?>
+
 </body>
 </html>
