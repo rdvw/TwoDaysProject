@@ -18,8 +18,7 @@ if(isset($_POST['submit'])){
     if (empty($email) || empty($password)) {
         echo 'email or password should be not empty';
     }else{
-        require_once 'database_acces.php';
-        $connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
+        require_once 'db_connect.php';
         if ($isValidMail) {
             $query = "SELECT * FROM `users` WHERE `email` = '$isValidMail'";
             $result_query = mysqli_query($connect, $query); 
@@ -30,7 +29,7 @@ if(isset($_POST['submit'])){
                     if($check){
                         setcookie('staylogin','login',time()+(3600*24*30));
                     }
-                    //header("Location: myaccount.php"); //should the Main Page 
+                    header("Location: home.php");
                 }else{
                     echo '<br>Wrong Password';
                 }
