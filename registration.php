@@ -55,7 +55,7 @@
 
             // Check if the user was successfully registered 
             if ($result_query)
-                echo 'Successfully registered. You can now <a href="login.php">login</a>.';
+                echo 'Successfully registered.';
             else
                 echo 'Something went wrong. Try again...';
         }
@@ -65,11 +65,12 @@
 
     <h1>Register to the website</h1>
     <br>
-    <form action="" method="post">
-        <input type="text" name="firstname" value="<?php echo $firstname ?>"><br>
-        <input type="text" name="lastname" value="<?php echo $lastname ?>"><br>
-        <input type="text" name="email" value="<?php echo $email ?>"><br>
-        <input type="password" name="password" value="<?php echo $password ?>"><br>
+    <form action="#" method="POST">
+        <!-- <form action="registration_result.php" method="POST"> -->
+        <input type="text" name="firstname" value="<?php echo $firstname ?>" placeholder="First name"><br>
+        <input type="text" name="lastname" value="<?php echo $lastname ?>" placeholder="Last name"><br>
+        <input type="text" name="email" value="<?php echo $email ?>" placeholder="Email"><br>
+        <input type="password" name="password" value="<?php echo $password ?>" placeholder="Password"><br>
         <input type="submit" name="submit" value="Register">
     </form>
 
