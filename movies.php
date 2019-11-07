@@ -18,7 +18,7 @@
 	if(!$connect) echo '!! Cannot get categories from backend.';
 	$query = 'SELECT * FROM categories ORDER BY title';
 	$result_query = mysqli_query($connect, $query);
-	$categorySelectHTML = 'Category: <select name="category">';
+	$categorySelectHTML = 'Category: <select name="category" id="category">';
 	$categorySelectHTML .= '<option value="">all categories</option>';
 	while($res = mysqli_fetch_assoc($result_query)){
 		$categorySelectHTML .= '<option value="'.$res['category_id'].'">'.$res['title'].'</option>';
@@ -34,13 +34,13 @@
 			<?php echo $categorySelectHTML; ?>
 
 			Sort by:
-			<select name="sortBy">
+			<select name="sortBy" id="sortBy">
 				<option value="release_year">release year</option>
 				<option value="title">title</option>
 			</select>
 
 			Sorting:
-			<select name="sorting">
+			<select name="sorting" id="sorting">
 				<option value="ASC">ascending (increasing)</option>
 				<option value="DESC">descending (descreasing)</option>
 			</select>
@@ -73,8 +73,13 @@
 			$sql_query = "SELECT * FROM movies ";
 			if($category) $sql_query .= "WHERE category_id = ".$category." ";
 			$sql_query .= "ORDER BY ".$sortBy." " .$sorting; // !! important: use apostophes instead of single quotes here!					
+			echo '<script>
+			$("#appliedFilter").html("'.$sql_query.'");
+			$("#category").val("'.$category.'");
+			$("#sortBy").val("'.$sortBy.'");
+			$("#sorting").val("'.$sorting.'");			
+			</script>';
 		}
-		echo '<script>$("#appliedFilter").html("'.$sql_query.'");</script>';
 
 		$result_query = mysqli_query($connect, $sql_query);
 		if(!$result_query) echo '!! No results retrieved. SQL error: ' . mysqli_error($connect);
