@@ -1,5 +1,4 @@
 <?php
-
 if (empty($_POST) || !isset($_POST['search'])) {
     echo '!! No data retrieved to search for.';
     exit();

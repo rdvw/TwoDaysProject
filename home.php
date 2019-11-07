@@ -1,6 +1,14 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['login'])) {
+      header("Location: index.php");
+    }
+?>
+<?php
 
-<?php include_once('nav.html'); ?>
+  include_once('nav.html');
 
+?>
 <div style="text-align:center;margin: auto 20%;" id="container">
 
     <p>
@@ -42,7 +50,7 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
     </script>
 
-  <script>
+<script>
     $(function () {
       $('#search').keyup(function (e) {
         e.preventDefault();
@@ -68,4 +76,4 @@
       $("#search").val(val);
       $("#results").hide();
     }
-  </script>
+</script>

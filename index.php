@@ -13,8 +13,6 @@
 
     require_once 'nav.html';
 
-    require_once 'db_connect.php';
-    // var_dump($connect);
     echo '<p class="home">Hi, please <a href="login.php">login</a> or <a href="registration.php">register</a>.</p>';
 
     ?>

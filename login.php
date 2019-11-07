@@ -1,7 +1,6 @@
 <?php
-if (isset($_COOKIE['staylogin'])) {
-    $_SESSION['login'] = $_COOKIE['staylogin'];
-}
+session_start();
+
 $email = '';
 $password = '';
 
@@ -26,9 +25,6 @@ if(isset($_POST['submit'])){
                 $res = mysqli_fetch_assoc($result_query);
                 if(password_verify($password, $res['password'])){
                     $_SESSION['login'] = $res['email'];
-                    if($check){
-                        setcookie('staylogin','login',time()+(3600*24*30));
-                    }
                     header("Location: home.php");
                 }else{
                     echo '<br>Wrong Password';
