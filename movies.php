@@ -18,7 +18,7 @@
 	if(!$connect) echo '!! Cannot get categories from backend.';
 	$query = 'SELECT * FROM categories ORDER BY title';
 	$result_query = mysqli_query($connect, $query);
-	$categorySelectHTML = 'Category: <select name="category" id="category">';
+	$categorySelectHTML = '<select name="category" id="category">';
 	$categorySelectHTML .= '<option value="">all categories</option>';
 	while($res = mysqli_fetch_assoc($result_query)){
 		$categorySelectHTML .= '<option value="'.$res['category_id'].'">'.$res['title'].'</option>';
@@ -45,17 +45,23 @@
 				<option value="DESC">descending (descreasing)</option>
 			</select>
 			<input type="submit" name="filtersNorderings" value="-> apply filter">
+			<input type="number" name="paging" id="paging" style="width:2em;" value="0"># /page
 		</form>
 		
 	</section>	
 	<div style="text-align:center;" id="appliedFilter"></div>
 
-	<h1>Movies list</h1>
-	<hr>
+	<div id="pagination" style="display:flex;justify-content:space-around;margin:auto 40%;">
+	<a href="">&lt;&lt;&lt;</a>
+	<span>Page #</span>
+	<a href="">&gt;&gt;&gt;</a>
+	</div>
 
 	<?php
 
 	if ($connect) {
+
+		$paging = 0; // # of movies on one page (pagination)
 
 		// this is the standard query
 		$sql_query = 'SELECT * FROM movies ORDER BY title';
@@ -67,22 +73,34 @@
 		}
 		if (isset($_POST['filtersNorderings'])) {
 			//var_dump($_POST);
-			$category = trim($_POST['category']);
-			$sortBy = trim($_POST['sortBy']);
-			$sorting = trim($_POST['sorting']);
+			$category = $_POST['category'];
+			$sortBy = $_POST['sortBy'];
+			$sorting = $_POST['sorting'];
+			$paging = $_POST['paging'];
 			$sql_query = "SELECT * FROM movies ";
 			if($category) $sql_query .= "WHERE category_id = ".$category." ";
 			$sql_query .= "ORDER BY ".$sortBy." " .$sorting; // !! important: use apostophes instead of single quotes here!					
+			if($paging) $sql_query .= " LIMIT ".$paging;
+
 			echo '<script>
 			$("#appliedFilter").html("'.$sql_query.'");
 			$("#category").val("'.$category.'");
 			$("#sortBy").val("'.$sortBy.'");
-			$("#sorting").val("'.$sorting.'");			
+			$("#sorting").val("'.$sorting.'");
+			$("#paging").val("'.$paging.'");				
 			</script>';
 		}
+		// pagination
+
+
 
 		$result_query = mysqli_query($connect, $sql_query);
 		if(!$result_query) echo '!! No results retrieved. SQL error: ' . mysqli_error($connect);
+
+		echo'
+		<h1>Movies list</h1>
+		<hr>
+		';
 
 		while ($db_field = mysqli_fetch_assoc($result_query)) {
 
