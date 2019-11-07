@@ -12,11 +12,12 @@
 
     </p>
 
-    <section id="search">
-        <form action="search.php" method="POST">
-            <input type="text" name="search" id="search" placeholder="your search term here">
+    <section id="searchSection">
+        <form action="movies.php" method="POST">
+            <input type="text" name="queryFromHome" id="search" placeholder="your search term here">
             <input type="submit" name="submit" value="search">
-            <div id="results">
+            <div style="border: solid 2px blue;" id="results">
+              ... autocomplete will be here ...
             </div>
         </form>
     </section>
@@ -46,15 +47,15 @@
       $('#search').keyup(function (e) {
         e.preventDefault();
         $.ajax({
-          url: 'search.php',
+          url: 'searchAutoComplete.php',
           type: 'post',
           dataType: "html",
           data: { search: $(this).val() },
           success: function (result) {
-            console.log(result);
+            //console.log(result);
             $('#results').show();
             $('#results').html(result);
-            $("#results").css("background", "#FFF");
+            $("#results").css("background-color", "#ccc");
           },
           error: function (err) {
             // IF AJAX ERROR HAPPENED
@@ -64,7 +65,7 @@
     });
 
     function selectCountry(val) {
-      $("#mysearch").val(val);
+      $("#search").val(val);
       $("#results").hide();
     }
   </script>

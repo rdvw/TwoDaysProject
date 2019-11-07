@@ -4,7 +4,7 @@ if (empty($_POST) || !isset($_POST['search'])) {
     echo '!! No data retrieved to search for.';
     exit();
 }
-  echo 'I got this : ' . $_POST['search'];
+  //echo 'I got this : ' . $_POST['search'];
   $mySearch = trim($_POST['search']);
 
   // Search into DB
@@ -17,7 +17,7 @@ if (empty($_POST) || !isset($_POST['search'])) {
 
   $query = "SELECT *
   FROM movies
-  WHERE title LIKE '$mySearch%'";
+  WHERE title LIKE '%$mySearch%'";
 
   // Send an SQL request to our DB
   $result_query = mysqli_query($connect, $query);
@@ -30,9 +30,10 @@ if (empty($_POST) || !isset($_POST['search'])) {
   // Create the array that contains all title matching
   $movies = array();
 
-  echo '<ul id="movies-list">';
+  echo '<ul id="movies-list" style="list-style-type:none;">';
   while ($res = mysqli_fetch_assoc($result_query)) {
-    echo '<li onClick="selectCountry(\'' . $res['title'] . '\')">' . $res['title'] . '</li>';
+    // below: there is no inline style attribute for hover! => need to use mouseover!
+    echo '<li onmouseover="this.style.backgroundColor=\'#006db9\'" onmouseout="this.style.backgroundColor=\'\'" onClick="selectCountry(\'' . $res['title'] . '\')">' . $res['title'] . '</li>';
   }
   echo '</ul>';
 
