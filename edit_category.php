@@ -25,6 +25,7 @@
 
 </html>
 
+
 <?php
 if (isset($_POST['submit'])) {
     $title = $_POST['title'];
@@ -45,6 +46,35 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
+
+
+/*
+
+<?php
+    if (isset($_POST['submit'])) {
+        $title = $_POST['title'];
+        $description = $_POST['description'];
+        $picture = $_POST['picture'];
+        $release_year = $_POST['release_year'];
+        $local_path = $_POST['local_path'];
+        $category = $_POST['category'];
+        if(empty($title) || empty($description) || empty($picture) || empty($release_year) || empty($local_path) || empty($category)){
+            echo 'Missing same details. Try again...';
+        }else{
+            $query = "INSERT INTO movies(title, description, picture, release_year, local_path, category_id) VALUES('$title', '$description', '$picture', $release_year,'$local_path',$category)";
+            $result_query = mysqli_query($connect, $query);
+            if ($result_query)
+                echo 'Successfully registered new movie.';
+            else
+                echo 'Something went wrong. Try again...';
+        }
+    }
+
+    mysqli_close($connect);
+
+*/
+
 
 mysqli_close($connect);
 
