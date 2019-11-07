@@ -1,17 +1,13 @@
 <?php
     session_start();
-    if (isset($_COOKIE['staylogin'])) {
-        $_SESSION['login'] = $_COOKIE['staylogin'];
+    if (!isset($_SESSION['login'])) {
+      header("Location: index.php");
     }
-    include_once('nav.html');
 ?>
 <?php
-if (isset($_SESSION['login'])){
-  
-}else{
-  echo 'Not login';
-  header("Location: index.php");
-}
+
+  include_once('nav.html');
+
 ?>
 <div style="text-align:center;margin: auto 20%;" id="container">
 

@@ -1,7 +1,7 @@
 <?php
     session_start();
-    if (isset($_COOKIE['staylogin'])) {
-        $_SESSION['login'] = $_COOKIE['staylogin'];
+    if (!isset($_SESSION['login'])) {
+      header("Location: index.php");
     }
 ?>
 <!DOCTYPE html>

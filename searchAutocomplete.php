@@ -1,9 +1,4 @@
 <?php
-  session_start();
-    if (isset($_COOKIE['staylogin'])) {
-        $_SESSION['login'] = $_COOKIE['staylogin'];
-    }
-
 if (empty($_POST) || !isset($_POST['search'])) {
     echo '!! No data retrieved to search for.';
     exit();
