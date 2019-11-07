@@ -19,9 +19,14 @@
 
 	if ($connect) {
 
+		// this is the standard query
 		$sql_query = 'SELECT * FROM movies ORDER BY title';
-		
-
+		// if no other query is transmitted by a form from another php-page.
+		if (isset($_POST['queryFromHome'])) {
+			$searchTerm = trim($_POST['queryFromHome']);
+			$sql_query = "
+			SELECT * FROM movies WHERE title LIKE '%$searchTerm%'";
+		}
 
 		$result_query = mysqli_query($connect, $sql_query);
 
@@ -60,4 +65,5 @@
 ● An ‘Add to playlist’ button/icon (cf. section ‘playlist’) -->
 
 </body>
+
 </html>
