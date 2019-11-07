@@ -33,7 +33,7 @@
     </section>
 
     <section id="4randomMovies">
-        // include_once('4randomMovies.php');
+        <?php include_once('4randomMovies.php'); ?>
     </section>
 
 </div>
