@@ -10,15 +10,25 @@
 <?php
     include_once('nav.html');
     require_once 'db_connect.php';
-    $query = "SELECT * FROM `movies` WHERE product_id =".$_GET['id'];
+    $query = "SELECT * FROM `movies` WHERE movie_id =".$_GET['id'];
     $result_query = mysqli_query($connect, $query);
     $res = mysqli_fetch_assoc($result_query);
-    echo '<img width="100px" src="img/'.$res['picture'].'"><br>';
+    echo '<div style="display:flex; justify-content: center; margin-top: 20px">';
+    echo '<div style="margin-right:50px">';
+    echo '<img width="300px" src="'.$res['picture'].'"><br>';
+    echo 'Sortie en '.$res['release_year'];
+    echo '</div>';
+    echo '<div>';
+    echo '<div style="margin-bottom:10px">';
     echo '<a href="'.$res['local_path'].'">'.$res['title'].'</a>';
-    echo $res['category_id'];
-    echo 'Sortie en '.$res['release-year'];
-    echo $res['description'];
+    //echo $res['category_id'];
+    echo '</div>';
+    echo '<div>';
+    echo $res['description'].'<br><br>';
     echo $res['local_path'];
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
     mysqli_close($connect);
 ?>
 </body>
