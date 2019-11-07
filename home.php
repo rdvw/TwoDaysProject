@@ -1,6 +1,18 @@
-
-<?php include_once('nav.html'); ?>
-
+<?php
+    session_start();
+    if (isset($_COOKIE['staylogin'])) {
+        $_SESSION['login'] = $_COOKIE['staylogin'];
+    }
+    include_once('nav.html');
+?>
+<?php
+if (isset($_SESSION['login'])){
+  
+}else{
+  echo 'Not login';
+  header("Location: index.php");
+}
+?>
 <div style="text-align:center;margin: auto 20%;" id="container">
 
     <p>
@@ -42,7 +54,7 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
     </script>
 
-  <script>
+<script>
     $(function () {
       $('#search').keyup(function (e) {
         e.preventDefault();
@@ -68,4 +80,4 @@
       $("#search").val(val);
       $("#results").hide();
     }
-  </script>
+</script>

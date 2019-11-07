@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if (isset($_COOKIE['staylogin'])) {
+        $_SESSION['login'] = $_COOKIE['staylogin'];
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

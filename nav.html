@@ -9,7 +9,10 @@
     </section>
 
     <section id="headerRegister">
-        ? not registered? <br> <a style="padding:15px;margin:10px" href="register.php">Sign up Here</a>
+        <?php if(!isset($_SESSION['login'])){
+            echo '<br> <a style="padding:15px;margin:10px" href="registration.php">Sign up Here</a>';
+        }
+        ?>
     </section>
 
     <section id="headerRight">
@@ -28,9 +31,7 @@
                 <a style="padding:15px;margin:10px" href="logout.php">Logout</a>
             ';
         }
-    ?>
-        
-
+        ?>
     </section>
 
 </nav>
