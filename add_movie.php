@@ -32,7 +32,7 @@
 <form action="#" method="POST">
     
     Title: <input type="text" name="title" value="<?php echo $title ?>" required><br>
-    Description: <input type="text" name="description" value="<?php echo $description ?>" required><br>
+    Description: <textarea name="description" cols="30" rows="1" required><?php echo $description ?></textarea><br>
     Picture: <input type="text" name="picture" value="<?php echo $picture ?>"required><br>
     Release Year: <input type="number" name="release_year"  value="<?php echo $release_year ?>"required><br>
     Local Path: <input type="text" name="local_path"  value="<?php echo $local_path ?>" required><br>
@@ -55,6 +55,7 @@
 </html>
 <?php
     if (isset($_POST['submit'])) {
+        var_dump($_POST);
         $title = $_POST['title'];
         $description = $_POST['description'];
         $picture = $_POST['picture'];

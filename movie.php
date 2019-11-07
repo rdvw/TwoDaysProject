@@ -10,7 +10,7 @@
 <?php
     include_once('nav.html');
     require_once 'db_connect.php';
-    $query = "SELECT * FROM `movies` WHERE movie_id =".$_GET['id'];
+    $query = "SELECT m.title, m.description, m.picture, m.release_year, m.local_path, cat.title as category FROM movies m INNER JOIN categories cat ON cat.category_id = m.category_id WHERE movie_id=".$_GET['id'];
     $result_query = mysqli_query($connect, $query);
     $res = mysqli_fetch_assoc($result_query);
     echo '<div style="display:flex; justify-content: center; margin-top: 20px">';
@@ -19,9 +19,9 @@
     echo 'Sortie en '.$res['release_year'];
     echo '</div>';
     echo '<div>';
-    echo '<div style="margin-bottom:10px">';
-    echo '<a href="'.$res['local_path'].'">'.$res['title'].'</a>';
-    //echo $res['category_id'];
+    echo '<div style="display:flex; margin-bottom:10px">';
+    echo '<a style="padding-right:50px" href="'.$res['local_path'].'">'.$res['title'].'</a>';
+    echo $res['category'];
     echo '</div>';
     echo '<div>';
     echo $res['description'].'<br><br>';
