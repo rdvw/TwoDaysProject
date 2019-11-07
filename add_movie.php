@@ -30,11 +30,8 @@
 </form>    
 </body>
 </html>
-
 <?php
     if (isset($_POST['submit'])) {
-        var_dump($_POST);
-        echo '<hr>';
         $title = $_POST['title'];
         $description = $_POST['description'];
         $picture = $_POST['picture'];
@@ -45,6 +42,7 @@
             echo 'Missing same details. Try again...';
         }else{
             $query = "INSERT INTO movies(title, description, picture, release_year, local_path, category_id) VALUES('$title', '$description', '$picture', $release_year,'$local_path',$category)";
+            $result_query = mysqli_query($connect, $query);
             if ($result_query)
                 echo 'Successfully registered new movie.';
             else
